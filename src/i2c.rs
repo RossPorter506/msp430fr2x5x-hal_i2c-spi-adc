@@ -370,8 +370,8 @@ impl<USCI:EUsciI2CBus> SDL<USCI>{
             return Err::<(), I2CErr>(I2CErr::GotNACK);
         }
 
-        for i in 0 .. bytes.len() {
-            usci.uctxbuf_wr(bytes[i]);
+        for &byte in bytes {
+            usci.uctxbuf_wr(byte);
             ifg = usci.ifg_rd();
             while !ifg.uctxifg0() {
                 ifg = usci.ifg_rd();
