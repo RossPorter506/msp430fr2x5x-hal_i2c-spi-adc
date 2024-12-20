@@ -404,10 +404,7 @@ impl<USCI:EUsciI2CBus> SDL<USCI>{
         buffer: &mut [u8],
     ) -> Result<(), I2CErr>{
         self.set_transmission_mode(TransmissionMode::Transmit);
-        let result = self.read(address, buffer);
-        if result.is_err() {
-            return result;
-        }
+        self.read(address, buffer)?;
         self.set_transmission_mode(TransmissionMode::Receive);
         self.write(address, bytes)
     }
