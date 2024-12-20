@@ -554,9 +554,3 @@ impl<USCI:EUsciI2CBus> TransactionalIter<TenBitAddress> for SDL<USCI> {
         SDL::exec_iter(self, address, operations)
     }
 }
-
-
-
-
-
-
