@@ -361,7 +361,7 @@ impl<PORT: PortNum, PIN: PinNum> OutputPin for Pin<PORT, PIN, Output> {
     #[inline]
     fn set_low(&mut self) -> Result<(), Self::Error> {
         //TODO figure out why this is needed for screen
-        for _ in 0..200{
+        for _ in 0..200 {
             asm::nop();
         }
         let p = unsafe { PORT::steal() };
@@ -372,7 +372,7 @@ impl<PORT: PortNum, PIN: PinNum> OutputPin for Pin<PORT, PIN, Output> {
     #[inline]
     fn set_high(&mut self) -> Result<(), Self::Error> {
         //TODO figure out why this is needed for screen
-        for _ in 0..200{
+        for _ in 0..200 {
             asm::nop();
         }
         let p = unsafe { PORT::steal() };
